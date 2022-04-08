@@ -1,0 +1,10 @@
+testdata/data.txt
+.package-lock.json
+err.js
+nano.js
+package-lock.json
+report.*
+set.js
+node_modules/
+coverage/
+.vscode/
