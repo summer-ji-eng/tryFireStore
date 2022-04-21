@@ -12,6 +12,7 @@ class LineTransform extends stream.Transform
         this._continueTransform = null;
         this._transforming = false;
         this._debugTransformCallCount = 0;
+        // this._nextLine = 0;
     }
 
     _transform(chunk, encoding, callback)
@@ -43,6 +44,7 @@ class LineTransform extends stream.Transform
             {
                 let backpressure = false;
                 let line = "";
+                // let nextLine = this._nextLine;
                 while (nextLine < lines.length)
                 {
                     // console.log("bp: " + backpressure, " nextLine: ", nextLine);
@@ -52,6 +54,7 @@ class LineTransform extends stream.Transform
                   let data = line + "\n";
                     if (!this.push(data))
                     {
+                        // this._nextLine = nextLine;
                         return;
                         // console.log('---fail to push the data')
                         // console.log("bp: " + backpressure, " nextLine: ", nextLine);

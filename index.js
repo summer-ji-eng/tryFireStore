@@ -52,11 +52,14 @@ async function runQuery() {
       structuredQuery,
     }
   );
+  let counter = 0;
 
   stream.on('data', (data) => {
+    counter++;
     console.log('-----data::', data);
   });
   stream.on('end', () => {
+    console.log('How many data:: ', counter);
     console.log('----------------done');
   });
 }

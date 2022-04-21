@@ -3,10 +3,11 @@
     "@google-cloud/firestore": "^4.15.1",
     "chai": "^4.3.4",
     "event-stream": "^4.0.1",
-    "google-gax": "^2.30.1",
+    "google-gax": "file:../gax-nodejs/google-gax-2.30.2.tgz",
     "jsonstream": "^1.0.3",
     "JSONStream": "^0.8.4",
     "proto3-json-serializer": "https://storage.googleapis.com/protobufjs-proto3-json/proto3-json-serializer-0.1.0.tgz",
+    "retry-request": "^4.2.2",
     "stream-json": "^1.7.2",
     "streamjson": "^0.0.1"
   },

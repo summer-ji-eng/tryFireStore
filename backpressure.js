@@ -1,6 +1,6 @@
 const {FirestoreClient} = require('@google-cloud/firestore').v1;
 
-function main() {
+async function main() {
   // Create a new client
   const firestore = new FirestoreClient({fallback: 'rest'});
   const projectId = await firestore.getProjectId();
@@ -31,21 +31,30 @@ function main() {
       }
     }
     stream = firestore.runQuery(request);
+    // console.log('----stream:: ', stream)
   }
-
+  let counter = 0;
   stream.on('error', (err) => {
     console.log('----error:: ', err);
   })
   stream.on('data', data => {
-    // console.log('----received data:: ', JSON.stringify(data, null, 2));
+    counter++;
+    console.log('How many data records:: ', counter)
+    // console.log('----received da÷ta:: ', JSON.stringify(data, null, 2));
   })
   stream.on('end', () => {
+    console.log('How many data records:: ', counter)
     console.log('----stream end');
   })
   stream.on('close', () => {
     console.log('----stream close');
   })
-
+  stream.on('response', (resp) => {
+    console.log('response event received::', resp)
+  })
+  stream.on('status', (resp) => {
+    console.log('response event status::', resp)
+  })
 }
 
 main();
